@@ -1,0 +1,58 @@
+# include<stdio.h>
+void merge(int arr[], int l, int m, int r)
+{
+    int i=l,j=m+1;
+    while(i<=m && j<=r)
+    {
+        if(arr[i]<=arr[j])
+        {
+            i++;
+    }
+    else{
+        int k=j;
+        while(k>i)
+        {
+            int temp=arr[k];
+            arr[k]=arr[k-1];
+            arr[k-1]=temp;
+            k--;
+
+        }
+j++;
+m++;
+i++;
+}} }
+void mergesort(int arr[], int l, int r)
+{
+    if(l<r)
+    {
+        int m= (l+r)/2;
+        mergesort(arr, l, m);
+        mergesort(arr, m+1,r);
+        merge(arr,l, m, r);
+
+    }
+}
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+int main()
+{
+    int n=5;
+    int arr[5];
+    printf("enter %d elements;", n);
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    printf("original array:");
+    printArray(arr,n);
+    mergesort(arr, 0, n-1 );
+    printf("sorted array:");
+    printArray(arr,n);
+    return 0;
+}
+
+
